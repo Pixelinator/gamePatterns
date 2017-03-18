@@ -1,0 +1,2 @@
+# gamePatterns
+some useful patterns
