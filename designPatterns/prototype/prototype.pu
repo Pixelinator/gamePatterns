@@ -1,0 +1,24 @@
+@startuml
+title Prototype Pattern
+
+Demon <|-- Monster
+
+class Monster {
+  +Monster();
+  +virtual ~Monster();
+  +virtual Monster* clone();
+}
+
+class Demon {
+  -int health_;
+  -int speed_;
+  +Demon(int health, int speed);
+  +virtual Monster* clone();
+}
+
+class Spawner {
+  -Monster* prototype_;
+  +Spawner(Monster* prototype);
+  +virtual ~Spawner();
+}
+@enduml

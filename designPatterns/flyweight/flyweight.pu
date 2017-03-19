@@ -1,0 +1,31 @@
+@startuml
+title Flyweight Pattern
+
+TreeModel <|-- Model
+
+class Tree {
+  -TreeModel* model;
+  -Vector position;
+  -double height;
+  -double thickness;
+  -Color barkTint;
+  -Color leafTint;
+  +Tree ();
+  +virtual ~Tree ();
+}
+
+class Model {
+  -Mesh mesh;
+  -Texture texture;
+  +Model ();
+  +virtual ~Model ();
+}
+
+class TreeModel {
+  -Mesh mesh;
+  -Texture bark;
+  -Texture leaves;
+  +TreeModel ();
+  +virtual ~TreeModel ();
+}
+@enduml

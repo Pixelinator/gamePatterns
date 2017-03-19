@@ -1,0 +1,28 @@
+@startuml
+
+title Observer Pattern
+
+Achievement <|-- Observer
+
+class Observer {
+  +Observer();
+  +virtual ~Observer();
+  +virtual void onNotify(const Entity& entity, Event event) ;
+}
+
+class Achievement {
+  -void unlock(Achievement achievement);
+  +Achievement();
+  +virtual ~Achievement();
+  +virtual void onNotify(const Entity& entity, Event event);
+}
+
+class Subject {
+  -Observer* observers_[MAX_OBSERVERS];
+  -int numObservers_;
+  #notify(const Entity& entity, Event event);
+  +void addObserver(Observer* observer);
+  +void removeObserver(Observer* observer);
+}
+
+@enduml
