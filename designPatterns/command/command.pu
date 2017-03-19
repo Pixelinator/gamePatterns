@@ -1,0 +1,32 @@
+@startuml
+title Command Pattern
+
+MoveUnitCommand <|-- Command
+
+class Command {
+    +Command();
+    +virtual ~Command();
+    +virtual void execute();
+    +virtual void undo();
+}
+
+class MoveUnitCommand {
+    -Unit* unit;
+    -Vector2f* position;
+    -Vector2f* positionBefore;
+    +MoveUnitCommand(Unit* unit, Vector2f* position);
+    +virtual ~MoveUnitCommand();
+    +virtual void execute();
+    +virtual void undo();
+}
+
+class InputHandler {
+    -Command *buttonX_;
+    -Command *buttonY_;
+    -Command *buttonA_;
+    -Command *buttonB_;
+    +InputHandler ();
+    +virtual ~InputHandler ();
+    +Command* handleInput();
+}
+@enduml
