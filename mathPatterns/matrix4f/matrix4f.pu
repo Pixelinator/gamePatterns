@@ -1,0 +1,8 @@
+@startuml
+title Matrix4f
+
+class Matrix4f {
+  +Matrix4f ();
+  +virtual ~Matrix4f ();
+}
+@enduml

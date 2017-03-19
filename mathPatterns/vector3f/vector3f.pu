@@ -1,0 +1,11 @@
+@startuml
+title Vector3f
+
+class Vector3f {
+  -float x;
+  -float y;
+  -float z;
+  +Vector3f ();
+  +virtual ~Vector3f ();
+}
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+title Vector2f
+
+class Vector2f {
+  -float x;
+  -float y;
+  +Vector2f ();
+  +virtual ~Vector2f ();
+  +void setX(float);
+  +void setY(float);
+  +float getX();
+  +float getY();
+}
+@enduml
