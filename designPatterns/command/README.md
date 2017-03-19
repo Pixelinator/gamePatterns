@@ -1,3 +1,3 @@
 # Command
 
-![Command Pattern](./command.svg)
+![Command Pattern](./command.png)
