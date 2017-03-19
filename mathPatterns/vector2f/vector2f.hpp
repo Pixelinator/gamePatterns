@@ -5,7 +5,7 @@ private:
   float y;
 
 public:
-  Vector2f (arguments);
+  Vector2f ();
   virtual ~Vector2f ();
   void setX(float);
   void setY(float);

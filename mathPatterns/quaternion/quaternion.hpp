@@ -4,6 +4,6 @@ private:
   /* data */
 
 public:
-  Quaternion (arguments);
+  Quaternion ();
   virtual ~Quaternion ();
 };

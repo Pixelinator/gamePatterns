@@ -4,6 +4,6 @@ private:
   /* data */
 
 public:
-  Matrix4f (arguments);
+  Matrix4f ();
   virtual ~Matrix4f ();
 };

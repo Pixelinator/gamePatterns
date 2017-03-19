@@ -6,6 +6,6 @@ private:
   float z;
 
 public:
-  Vector3f (arguments);
+  Vector3f ();
   virtual ~Vector3f ();
 };

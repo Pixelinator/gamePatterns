@@ -7,7 +7,7 @@ private:
   Command *buttonB_;
 
 public:
-  InputHandler (arguments);
+  InputHandler ();
   virtual ~InputHandler ();
   Command* handleInput();
 };
