@@ -1,0 +1,285 @@
+@startuml
+
+package <u>Engine</u> <<Node>>{
+
+  package "Audio" {
+    class AudioEngine {
+      -- Construct & Destruct --
+      +AudioEngine();
+      +virtual ~AudioEngine();
+      -- Set & Get --
+      -- Methods --
+    }
+  }
+
+  package "Core" {
+
+    class CoreEngine {
+      -- Construct & Destruct --
+      +CoreEngine();
+      +virtual ~CoreEngine();
+      -- Set & Get --
+      -- Methods --
+    }
+
+    class Game {
+      -- Construct & Destruct --
+      +Game();
+      +virtual ~Game();
+      -- Set & Get --
+      -- Methods --
+    }
+
+    class GameObject {
+      -- Construct & Destruct --
+      +GameObject();
+      +virtual ~GameObject();
+      -- Set & Get --
+      -- Methods --
+    }
+
+    class Input {
+      -- Construct & Destruct --
+      +Input();
+      +virtual ~Input();
+      -- Set & Get --
+      -- Methods --
+    }
+
+    class Time {
+      -- Construct & Destruct --
+      +Time();
+      +virtual ~Time();
+      -- Set & Get --
+      -- Methods --
+    }
+
+    class Transform {
+      -- Construct & Destruct --
+      +Transform();
+      +virtual ~Transform();
+      -- Set & Get --
+      -- Methods --
+    }
+
+    class Util {
+      -- Construct & Destruct --
+      +Util();
+      +virtual ~Util();
+      -- Set & Get --
+      -- Methods --
+    }
+  }
+
+  package "Math" {
+    class Quaternion {
+      -float x;
+      -float y;
+      -float z;
+      -float w;
+      -- Construct & Destruct --
+      +Quaternion();
+      +Quaternion(float x, float y, float z, float w);
+      +Quaternion(Vector3f axis, float angle);
+      +virtual ~Quaternion();
+      -- Set & Get --
+      +Quaternion set(float x, float y, float z, float w);
+      +Quaternion set(Quaternion r);
+      +void setX(float x);
+      +void setY(float y);
+      +void setZ(float z);
+      +void setW(float w);
+      +Vector3f getForward();
+      +Vector3f getBack();
+      +Vector3f getUp();
+      +Vector3f getDown();
+      +Vector3f getRight();
+      +Vector3f getLeft();
+      +float getX();
+      +float getY();
+      +float getZ();
+      +float getW();
+      -- Methods --
+      +float length();
+      +Quaternion normalized();
+      +Quaternion conjugate();
+      +Quaternion mul(float r);
+      +Quaternion mul(Quaternion r);
+      +Quaternion mul(Vector3f r);
+      +Quaternion sub(Quaternion r);
+      +Quaternion add(Quaternion r);
+      +Matrix4f toRotationMatrix();
+      +float dot(Quaternion r);
+      +Quaternion nLerp(Quaternion dest, float lerpFactor, boolean shortest);
+      +Quaternion sLerp(Quaternion dest, float lerpFactor, boolean shortest);
+      +boolean equals(Quaternion r);
+    }
+
+    class Matrix4f {
+      -float [][]m;
+      -- Construct & Destruct --
+      +Matrix4f();
+      +virtual ~Matrix4f();
+      -- Set & Get --
+      +void setM(float[][] m);
+      +void set(int x, int y, float value);
+      +float[][] getM();
+      +float get(int x, int y);
+      -- Methods --
+      +Matrix4f initIdentity();
+      +Matrix4f initTranslation(float x, float y, float z);
+      +Matrix4f initRotation(float x, float y, float z);
+      +Matrix4f initScale(float x, float y, float z);
+      +Matrix4f initPerspective(float fov, float aspectRatio, float zNear, float zFar);
+      +Matrix4f initOrthographic(float left, float right, float bottom, float top, float near, float far);
+      +Matrix4f initRotation(Vector3f forward, Vector3f up);
+      +Matrix4f initRotation(Vector3f forward, Vector3f up, Vector3f right);
+      +Vector3f transform(Vector3f r);
+      +Matrix4f mul(Matrix4f r);
+    }
+
+    class Vector2f {
+      -float x;
+      -float y;
+      -- Construct & Destruct --
+      +Vector2f();
+      +Vector2f(float x, float y);
+      +virtual ~Vector2f();
+      -- Set & Get --
+      +Vector2f set(float x, float y);
+      +Vector2f set(Vector2f r);
+      +void setX(float x);
+      +void setY(float y);
+      +float getX();
+      +float getY();
+      -- Methods --
+      +float length();
+      +float max();
+      +float dot(Vector2f r);
+      +Vector2f normalized();
+      +float cross(Vector2f r);
+      +Vector2f lerp(Vector2f dest, float lerpFactor);
+      +Vector2f rotate(float angle);
+      +Vector2f add(Vector2f r);
+      +Vector2f add(float r);
+      +Vector2f sub(Vector2f r);
+      +Vector2f sub(float r);
+      +Vector2f mul(Vector2f r);
+      +Vector2f mul(float r);
+      +Vector2f div(Vector2f r);
+      +Vector2f div(float r);
+      +Vector2f abs();
+      +String toString();
+      +boolean equals(Vector2f r);
+    }
+
+    class Vector3f {
+      -float x;
+      -float y;
+      -float z;
+      -- Construct & Destruct --
+      +Vector3f();
+      +Vector3f(float x, float y, float z);
+      +virtual ~Vector3f();
+      -- Set & Get --
+      +Vector3f set(float x, float y, float z);
+      +Vector3f set(Vector3f r);
+      +void setX(float x);
+      +void setY(float y);
+      +void setZ(float z);
+      +float getX();
+      +float getY();
+      +float getZ();
+      +Vector2f getXY();
+      +Vector2f getYZ();
+      +Vector2f getZX();
+      +Vector2f getYX();
+      +Vector2f getZY();
+      +Vector2f getXZ();
+      -- Methods --
+      +float length();
+      +float max();
+      +float dot(Vector3f r);
+      +Vector3f cross(Vector3f r);
+      +Vector3f normalized();
+      +Vector3f rotate(Vector3f axis, float angle);
+      +Vector3f rotate(Quaternion rotation);
+      +Vector3f lerp(Vector3f dest, float lerpFactor);
+      +Vector3f add(Vector3f r);
+      +Vector3f add(float r);
+      +Vector3f sub(Vector3f r);
+      +Vector3f sub(float r);
+      +Vector3f mul(Vector3f r);
+      +Vector3f mul(float r);
+      +Vector3f div(Vector3f r);
+      +Vector3f div(float r);
+      +Vector3f abs();
+      +String toString();
+      +boolean equals(Vector3f r);
+    }
+  }
+
+  package "Rendering" {
+    class Material {
+      -- Construct & Destruct --
+      +Material();
+      +virtual ~Material();
+      -- Set & Get --
+      -- Methods --
+    }
+
+    class Mesh {
+      -- Construct & Destruct --
+      +Mesh();
+      +virtual ~Mesh();
+      -- Set & Get --
+      -- Methods --
+    }
+
+    class Shader {
+      -- Construct & Destruct --
+      +Shader();
+      +virtual ~Shader();
+      -- Set & Get --
+      -- Methods --
+    }
+
+    class Texture {
+      -- Construct & Destruct --
+      +Texture();
+      +virtual ~Texture();
+      -- Set & Get --
+      -- Methods --
+    }
+
+    class Vertex {
+      -- Construct & Destruct --
+      +Vertex();
+      +virtual ~Vertex();
+      -- Set & Get --
+      -- Methods --
+    }
+  }
+
+  package "Logic" {
+    class LogicEngine {
+      -- Construct & Destruct --
+      +LogicEngine();
+      +virtual ~LogicEngine();
+      -- Set & Get --
+      -- Methods --
+    }
+  }
+
+  package "Physic" {
+    class PhysicEngine {
+      -- Construct & Destruct --
+      +PhysicEngine();
+      +virtual ~PhysicEngine();
+      -- Set & Get --
+      -- Methods --
+    }
+  }
+}
+
+@enduml

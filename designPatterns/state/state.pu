@@ -1,0 +1,48 @@
+@startuml
+
+title State Pattern
+
+class Hero {
+  -HeroState* state;
+  -HeroState* equipment;
+  ...
+  +Hero();
+  +virtual ~Hero();
+  +void handleInput(Input input);
+  +void update();
+}
+
+StandingState <|-- HeroState
+JumpingState <|-- HeroState
+DuckingState <|-- HeroState
+DivingState <|-- HeroState
+
+class HeroState {
+  +HeroState();
+  +virtual ~HeroState();
+  +void enter(Hero& hero);
+  +void handleInput(Hero& hero, Input input);
+  +void update(Hero& hero);
+}
+
+class StandingState {
+  +StandingState();
+  +virtual ~StandingState();
+}
+
+class JumpingState {
+  +JumpingState();
+  +virtual ~JumpingState();
+}
+
+class DuckingState {
+  +DuckingState();
+  +virtual ~DuckingState();
+}
+
+class DivingState {
+  +DivingState();
+  +virtual ~DivingState();
+}
+
+@enduml

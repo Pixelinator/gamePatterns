@@ -1,0 +1,25 @@
+@startuml
+title Double Buffer
+
+class Framebuffer {
+  -static const int WIDTH;
+  -static const int HEIGHT;
+  -char pixels[WIDTH*HEIGHT];
+  +Framebuffer();
+  +virtual ~Framebuffer();
+  +void clear();
+  +void draw();
+  +char* getPixels();
+}
+
+class Scene {
+  -Framebuffer buffers[2];
+  -Framebuffer* current;
+  -Framebuffer* next;
+  -void swap();
+  +Scene();
+  +virtual ~Scene();
+  +void draw();
+  +Framebuffer& getBuffer();
+}
+@enduml
